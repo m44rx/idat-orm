@@ -33,4 +33,9 @@ public class CursoServiceImpl implements CursosService {
 		repositorio.save(curso);
 	}
 
+	@Override
+	public void eliminarCurso(Integer id) {
+		repositorio.deleteById(id);
+	}
+
 }

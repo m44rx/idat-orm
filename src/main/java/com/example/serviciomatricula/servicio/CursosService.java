@@ -9,5 +9,6 @@ public interface CursosService {
 	List<Curso> listarCurso();
 	Curso obtenerCursoId(Integer id);
 	void grabarCurso(Curso curso);
+	void eliminarCurso(Integer id);
 
 }

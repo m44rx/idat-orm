@@ -17,6 +17,8 @@ public class Estudiante {
 	private Integer idEstudiante;
 	private String nombre;
 	private String apellido;
+	private String usuario;
+	private String contrasenia;
 	
 	@OneToOne
 	@JoinColumn(name="id_matricula",unique = true)
@@ -52,6 +54,22 @@ public class Estudiante {
 
 	public void setMatricula(Matricula matricula) {
 		this.matricula = matricula;
+	}
+
+	public String getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
+	}
+
+	public String getContrasenia() {
+		return contrasenia;
+	}
+
+	public void setContrasenia(String contrasenia) {
+		this.contrasenia = contrasenia;
 	}
 
 }

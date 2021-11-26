@@ -20,7 +20,7 @@ public class Profesor {
 	private Integer idProfesor;
 	private String nombre;
 	private String apellido;
-	
+
 	@ManyToMany(mappedBy = "itemProfesor",cascade = {CascadeType.PERSIST,CascadeType.MERGE})
 	private Set<Curso> itemCurso = new HashSet<>();
 
@@ -55,6 +55,5 @@ public class Profesor {
 	public void setItemCurso(Set<Curso> itemCurso) {
 		this.itemCurso = itemCurso;
 	}
-	
-	
+
 }
