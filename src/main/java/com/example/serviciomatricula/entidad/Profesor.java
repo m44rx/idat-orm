@@ -20,6 +20,9 @@ public class Profesor {
 	private Integer idProfesor;
 	private String nombre;
 	private String apellido;
+	private String usuario;
+	private String contrasenia;
+	private String rol;
 
 	@ManyToMany(mappedBy = "itemProfesor",cascade = {CascadeType.PERSIST,CascadeType.MERGE})
 	private Set<Curso> itemCurso = new HashSet<>();
@@ -54,6 +57,30 @@ public class Profesor {
 
 	public void setItemCurso(Set<Curso> itemCurso) {
 		this.itemCurso = itemCurso;
+	}
+
+	public String getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
+	}
+
+	public String getContrasenia() {
+		return contrasenia;
+	}
+
+	public void setContrasenia(String contrasenia) {
+		this.contrasenia = contrasenia;
+	}
+
+	public String getRol() {
+		return rol;
+	}
+
+	public void setRol(String rol) {
+		this.rol = rol;
 	}
 
 }

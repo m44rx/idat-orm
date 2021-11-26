@@ -1,5 +1,6 @@
 package com.example.serviciomatricula.security;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -12,20 +13,24 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Configuration
 @EnableWebSecurity
 public class ConfigSecurity extends WebSecurityConfigurerAdapter {
-		
+	
+	@Autowired
+	private MyUserDetailService userDetailService;
+	
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.inMemoryAuthentication().withUser("wilder").password(password().encode("123")).roles("INSTRUCTOR");
-		auth.inMemoryAuthentication().withUser("juan").password(password().encode("123")).roles("INST");
-		auth.inMemoryAuthentication().withUser("jair").password(password().encode("123")).roles("USER");
-			}
+//		auth.inMemoryAuthentication().withUser("wilder").password(password().encode("123")).roles("INSTRUCTOR");
+//		auth.inMemoryAuthentication().withUser("juan").password(password().encode("123")).roles("INST");
+//		auth.inMemoryAuthentication().withUser("jair").password(password().encode("123")).roles("USER");
+		auth.userDetailsService(userDetailService).passwordEncoder(password());
+	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
-//			.antMatchers("/curso/listar").hasAnyRole("INSTRUCTOR","USER");
+			.antMatchers("/curso/listar").hasAnyRole("INSTRUCTOR","USER");
 //			.antMatchers("/curso/listar").permitAll()
-			.antMatchers("/curso/listar").access("hasRole('INSTRUCTOR')");
+//			.antMatchers("/curso/listar").access("hasRole('INSTRUCTOR')");
 		http.authorizeRequests().and().httpBasic();
 		http.authorizeRequests().and().csrf().disable();
 
