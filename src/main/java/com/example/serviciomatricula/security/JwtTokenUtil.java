@@ -13,9 +13,6 @@ import io.jsonwebtoken.*;
 @Component
 public class JwtTokenUtil implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private static final long JWT_TOKEN_VALIDITY = 5 * 60 * 60;
 
