@@ -23,6 +23,7 @@ public class CursoController {
 	@Autowired
 	private CursosService servicio;
 	
+	// Usamos este metodo para probar la seguridad jwt
 	@GetMapping("/listar")
 	public ResponseEntity<List<Curso>> listarCurso(){
 		return new ResponseEntity<List<Curso>>(servicio.listarCurso(), HttpStatus.OK);
